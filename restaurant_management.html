@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        main {
+            padding: 1em;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        section {
+            margin-bottom: 1em;
+        }
+
+        #menu {
+            flex: 1;
+            margin-right: 1em;
+            padding: 1em;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #orders {
+            flex: 2;
+            padding: 1em;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 0.5em;
+            border-bottom: 1px solid #ccc;
+        }
+
+        button {
+            padding: 0.5em 1em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Restaurant Management System</h1>
+    </header>
+    <main>
+        <section id="menu">
+            <h2>Menu</h2>
+            <ul>
+                <li>
+                    <span>Burger</span>
+                    <button onclick="addToOrder('Burger', 10)">Add to Order</button>
+                </li>
+                <li>
+                    <span>Pizza</span>
+                    <button onclick="addToOrder('Pizza', 15)">Add to Order</button>
+                </li>
+                <li>
+                    <span>Salad</span>
+                    <button onclick="addToOrder('Salad', 8)">Add to Order</button>
+                </li>
+
+                <li>
+                    <span>sneaker</span>
+                    <button onclick="addToOrder('sneaker',100)">Add to Order</button>
+                </li>
+            </ul>
+        </section>
+        <section id="orders">
+            <h2>Orders</h2>
+            <ul>
+                <!-- Orders will be added here -->
+            </ul>
+        </section>
+    </main>
+    <script>
+        function addToOrder(name, price) {
+            const orderItem = document.createElement('li');
+            orderItem.innerHTML = `
+                <span>${name}</span>
+                <span>$${price}</span>
+                <button onclick="removeFromOrder(this)">Remove</button>
+            `;
+            document.getElementById('orders').querySelector('ul').appendChild(orderItem);
+        }
+
+        function removeFromOrder(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
