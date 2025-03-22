@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        #exchange {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #wallet, #trade {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #trade input[type="number"] {
+            width: 100px;
+        }
+
+        #transactions {
+            margin-left: 20px;
+        }
+
+        #transaction-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        #transaction-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cryptocurrency Exchange</h1>
+    </header>
+    <main>
+        <section id="exchange">
+            <div id="wallet">
+                <h2>Wallet</h2>
+                <p>Balance: <span id="balance">$100</span></p>
+            </div>
+            <div id="trade">
+                <h2>Trade</h2>
+                <div>
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" placeholder="0">
+                </div>
+                <div>
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" placeholder="0">
+                </div>
+                <button id="buy">Buy</button>
+                <button id="sell">Sell</button>
+            </div>
+        </section>
+        <section id="transactions">
+            <h2>Transaction History</h2>
+            <ul id="transaction-list">
+                <!-- Transaction items will be added here -->
+            </ul>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const balanceElement = document.getElementById("balance");
+            const amountInput = document.getElementById("amount");
+            const priceInput = document.getElementById("price");
+            const buyButton = document.getElementById("buy");
+            const sellButton = document.getElementById("sell");
+            const transactionList = document.getElementById("transaction-list");
+
+            buyButton.addEventListener("click", function() {
+                const amount = parseFloat(amountInput.value);
+                const price = parseFloat(priceInput.value);
+                const total = amount * price;
+                balanceElement.textContent = parseFloat(balanceElement.textContent) - total;
+                const listItem = document.createElement("li");
+                listItem.textContent = `Bought ${amount} units at $${price} each for a total of $${total}`;
+                transactionList.appendChild(listItem);
+            });
+
+            sellButton.addEventListener("click", function() {
+                const amount = parseFloat(amountInput.value);
+                const price = parseFloat(priceInput.value);
+                const total = amount * price;
+                balanceElement.textContent = parseFloat(balanceElement.textContent) + total;
+                const listItem = document.createElement("li");
+                listItem.textContent = `Sold ${amount} units at $${price} each for a total of $${total}`;
+                transactionList.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>
