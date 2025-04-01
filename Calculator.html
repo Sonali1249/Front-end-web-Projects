@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input[type="button"] {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+  background-color: #45a049;
+}
+
+input[type="text"] {
+  width: calc(100% - 10px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+  text-align: right;
+}
+</style>
+<script>
+    function calculate() {
+  var input = document.getElementById("input").value;
+  var result = eval(input);
+  document.getElementById("input").value = result;
+}
+
+function clearInput() {
+  document.getElementById("input").value = "";
+}
+</script>
+</head>
+<body>
+<div class="calculator">
+  <input type="text" id="input" readonly>
+  <input type="button" value="C" onclick="clearInput()">
+  <input type="button" value="7" onclick="document.getElementById('input').value += '7'">
+  <input type="button" value="8" onclick="document.getElementById('input').value += '8'">
+  <input type="button" value="9" onclick="document.getElementById('input').value += '9'">
+  <input type="button" value="/" onclick="document.getElementById('input').value += '/'">
+  <input type="button" value="4" onclick="document.getElementById('input').value += '4'">
+  <input type="button" value="5" onclick="document.getElementById('input').value += '5'">
+  <input type="button" value="6" onclick="document.getElementById('input').value += '6'">
+  <input type="button" value="s.s" onclick="document.getElementById('input').value += 's.s'">
+  <input type="button" value="1" onclick="document.getElementById('input').value += '1'">
+  <input type="button" value="2" onclick="document.getElementById('input').value += '2'">
+  <input type="button" value="3" onclick="document.getElementById('input').value += '3'">
+  <input type="button" value="-" onclick="document.getElementById('input').value += '-'">
+  <input type="button" value="0" onclick="document.getElementById('input').value += '0'">
+  <input type="button" value="." onclick="document.getElementById('input').value += '.'">
+  <input type="button" value="=" onclick="calculate()">
+  <input type="button" value="+" onclick="document.getElementById('input').value += '+'">
+</div>
+</body>
+</html>
